@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "kJGyXZ1gYUUmu+UWlu/uGwrCLqr0F1U31mFhmEUR8cmt2pJkewKMX2zPDVoZ/w3zR1/MiwCQbSfgW08+moaYCQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\hichem\\Desktop\\Pfe\\Infra\\Infra.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hichem\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512"
+  ],
+  "logs": []
+}
