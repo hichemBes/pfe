@@ -4,15 +4,11 @@ using System.Text;
 
 namespace Domain.Foriegn_Dto
 {
-    public class UserDto
+    public class UserDto: Microsoft.AspNet.Identity.EntityFramework.IdentityUser
     {
-        public Guid userId { get; set; }
-        public string name { get; set; }
-        public string Cin { get; set; }
-        public string Namefilliale { get; set; }
-        public Guid fk_Filliale { get; set; }
-        public string code { get; set; }
-        
-         
+        public string filliale { get; set; }
+        public Guid fk_filliale { get; set; }
+
+
     }
 }

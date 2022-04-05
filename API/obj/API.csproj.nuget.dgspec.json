@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hichem\\Desktop\\Pfe\\API\\API.csproj": {}
+    "C:\\Users\\hichem\\Desktop\\all\\Pfe\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hichem\\Desktop\\Pfe\\API\\API.csproj": {
+    "C:\\Users\\hichem\\Desktop\\all\\Pfe\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\Pfe\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\API\\API.csproj",
+        "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\API\\API.csproj",
         "packagesPath": "C:\\Users\\hichem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hichem\\Desktop\\Pfe\\API\\obj\\",
+        "outputPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hichem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,11 +28,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\Data.csproj"
+              "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\Data.csproj"
               },
-              "C:\\Users\\hichem\\Desktop\\Pfe\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -61,6 +61,10 @@
               "target": "Package",
               "version": "[3.1.0, )"
             },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.21, )"
+            },
             "Swashbuckle.AspNetCore.Swagger": {
               "target": "Package",
               "version": "[6.3.0, )"
@@ -72,6 +76,10 @@
             "Swashbuckle.AspNetCore.SwaggerUI": {
               "target": "Package",
               "version": "[6.3.0, )"
+            },
+            "System.IO.FileSystem": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
@@ -102,14 +110,14 @@
         }
       }
     },
-    "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\Data.csproj": {
+    "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\hichem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\obj\\",
+        "outputPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hichem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -126,8 +134,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj"
+              "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj"
               }
             }
           }
@@ -206,14 +214,14 @@
         }
       }
     },
-    "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj": {
+    "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\hichem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hichem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -254,6 +262,10 @@
               "target": "Package",
               "version": "[1.0.2123, )"
             },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.0, )"
@@ -286,14 +298,14 @@
         }
       }
     },
-    "C:\\Users\\hichem\\Desktop\\Pfe\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\Pfe\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\hichem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hichem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -310,11 +322,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\Data.csproj": {
-                "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Data\\Data.csproj"
+              "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Data\\Data.csproj"
               },
-              "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj"
+              "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj"
               }
             }
           }

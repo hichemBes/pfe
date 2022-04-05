@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Domain.Foriegn_Dto;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -11,6 +14,7 @@ namespace API.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+        HttpClient _httpClient = new HttpClient();
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -23,17 +27,26 @@ namespace API.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+        [HttpGet("&&")]
+
+ 
+        public UserDto GetuserById(Guid iduser)
             {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+                HttpResponseMessage response = _httpClient.GetAsync("https://localhost:44377/Identity?userId=" + iduser).Result;
+                response.EnsureSuccessStatusCode();
+                System.Console.WriteLine("response.Headers: " + response.Headers.ToString());
+                var responseBody = response.Content.ReadAsStringAsync().Result;
+                return JsonConvert.DeserializeObject<UserDto>(responseBody);
+            }
+        [HttpGet("fillialetest")]
+        public FillialeDto getsubsidiarybyid(Guid fillialeid)
+        {
+            HttpResponseMessage response = _httpClient.GetAsync("http://localhost:44349/" + fillialeid).Result;
+            response.EnsureSuccessStatusCode();
+            System.Console.WriteLine("response.Headers: " + response.Headers.ToString());
+            var responsebody = response.Content.ReadAsStringAsync().Result;
+            return JsonConvert.DeserializeObject<FillialeDto>(responsebody);
+
         }
     }
-}
+    }

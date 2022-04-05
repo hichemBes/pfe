@@ -27,6 +27,7 @@ namespace Infrastructure
             services.AddTransient<IGenericRepository<typeRequest>, Repository<typeRequest>>();
             services.AddTransient<IGenericRepository<CategoryFunction>, Repository<CategoryFunction>>();
             services.AddTransient<IGenericRepository<typerequestCatg>, Repository<typerequestCatg>>();
+            services.AddTransient<IGenericRepository<PieceJoint>, Repository<PieceJoint>>();
             #region Request
 
 
@@ -46,14 +47,14 @@ namespace Infrastructure
             services.AddTransient<IRequestHandler<PostId<typeRequest>, typeRequest>, PostIdGenericHandler<typeRequest>>();
             #endregion
 
-            //#region PieceJoint
-            //services.AddTransient<IRequestHandler<GetAllGenericQuery<PieceJoint>, IEnumerable<PieceJoint>>, GetAllGenericHandler<PieceJoint>>();
-            //services.AddTransient<IRequestHandler<GetGenericQueryById<PieceJoint>, PieceJoint>, GetGenericQueryByIdHandler<PieceJoint>>();
-            //services.AddTransient<IRequestHandler<PostGeneric<PieceJoint>, string>, PostGenericHandler<PieceJoint>>();
-            //services.AddTransient<IRequestHandler<PutGeneric<PieceJoint>, string>, PutGenericHandler<PieceJoint>>();
-            //services.AddTransient<IRequestHandler<DeleteGeneric<PieceJoint>, string>, DeleteGenericHandler<PieceJoint>>();
-            //services.AddTransient<IRequestHandler<PostId<PieceJoint>, PieceJoint>, PostIdGenericHandler<PieceJoint>>();
-            //#endregion
+            #region PieceJoint
+            services.AddTransient<IRequestHandler<GetAllGenericQuery<PieceJoint>, IEnumerable<PieceJoint>>, GetAllGenericHandler<PieceJoint>>();
+            services.AddTransient<IRequestHandler<GetGenericQueryById<PieceJoint>, PieceJoint>, GetGenericQueryByIdHandler<PieceJoint>>();
+            services.AddTransient<IRequestHandler<PostGeneric<PieceJoint>, string>, PostGenericHandler<PieceJoint>>();
+            services.AddTransient<IRequestHandler<PutGeneric<PieceJoint>, string>, PutGenericHandler<PieceJoint>>();
+            services.AddTransient<IRequestHandler<DeleteGeneric<PieceJoint>, string>, DeleteGenericHandler<PieceJoint>>();
+            services.AddTransient<IRequestHandler<PostId<PieceJoint>, PieceJoint>, PostIdGenericHandler<PieceJoint>>();
+            #endregion
             #region Organisme
             services.AddTransient<IRequestHandler<GetAllGenericQuery<Organisme>, IEnumerable<Organisme>>, GetAllGenericHandler<Organisme>>();
             services.AddTransient<IRequestHandler<GetGenericQueryById<Organisme>, Organisme>, GetGenericQueryByIdHandler<Organisme>>();

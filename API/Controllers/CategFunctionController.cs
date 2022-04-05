@@ -6,6 +6,7 @@ using Domain.Quieres;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -42,5 +43,22 @@ namespace API.Controllers
         {
             return _mediator.Send(new PutGeneric<CategoryFunction>(Cat)).Result;
         }
+        [HttpGet("getbycategoryId")]
+       
+          public IEnumerable<CategoryFunctionDto> getCategorybuFunctionId(Guid categoryId)
+            {
+                var data = _mediator.Send(new GetAllGenericQuery<CategoryFunction>(includes:
+                    e => e.Include(z => z.Category).
+                   Include(s => s.Function).ThenInclude(it => it.FunctionofUsers), condition: (g => g.Category.CategoryId== categoryId)
+                  )).Result.Select(data => _mapper.Map<CategoryFunctionDto>(data));
+
+                return data;
+            }
+        [HttpDelete("deleteFunctioncat")]
+        public string Delete(Guid id)
+        {
+            return _mediator.Send(new DeleteGeneric<CategoryFunction>(id)).Result;
+        }
     }
-}
+    }
+

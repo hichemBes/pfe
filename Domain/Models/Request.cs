@@ -13,6 +13,7 @@ namespace Domain.Models
         public enum Status
         {
             NotDone,
+            waitingvalidation,
             InProgress,
             Done
 

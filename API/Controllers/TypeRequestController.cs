@@ -29,7 +29,13 @@ namespace API.Controllers
         {
             return await _mediator.Send(new PostId<typeRequest>(Cat));
         }
+           [HttpGet("Getall")]
+        public typeRequest Getall()
+        {
 
+            var Category = _mediator.Send(new GetGenericQueryById<typeRequest>()).Result;
+            return _mapper.Map<typeRequest>(Category);
+        }
 
         [HttpGet("{id}")]
         public  typeRequest Get(Guid id)

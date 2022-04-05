@@ -13,6 +13,7 @@ namespace Domain.Dto
         public string RequestDescription { get; set; }
         public string  Filliale { get; set; }
         public Guid fk_RequestType { get; set; }
+        public string username { get; set; }
        
         public Guid fk_Organisme { get; set; }
         public string requesttype { get; set; }

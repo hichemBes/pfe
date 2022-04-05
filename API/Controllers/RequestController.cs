@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -39,6 +40,13 @@ namespace API.Controllers
             var data = _mediator.Send(new GetGenericQueryById<Request>(includes:
                 e => e.Include(z => z.Organisme).Include(s => s.RequestType))).Result;
             return _mapper.Map<RequestDto>(data);
+        }
+        [HttpGet("getallrequest")]
+        public IEnumerable< RequestDto> Getrequest()
+        {
+            var data = _mediator.Send(new GetAllGenericQuery<Request>(includes:
+                e => e.Include(z => z.Organisme).Include(s => s.RequestType))).Result.Select(data => _mapper.Map<RequestDto>(data));
+            return data;
         }
         [HttpDelete("deleteRequest")]
         public string Delete(Guid id)

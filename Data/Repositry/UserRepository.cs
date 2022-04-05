@@ -13,7 +13,7 @@ namespace Data.Repositry
         HttpClient _httpClient = new HttpClient();
        public UserDto GetuserById(Guid iduser)
         {
-            HttpResponseMessage response = _httpClient.GetAsync("https://localhost:44353/api/User/getById?id="+ iduser).Result;
+            HttpResponseMessage response = _httpClient.GetAsync("https://localhost:44377/Identity?userId=" + iduser).Result;
             response.EnsureSuccessStatusCode();
             System.Console.WriteLine("response.Headers: " + response.Headers.ToString());
             var responseBody = response.Content.ReadAsStringAsync().Result;

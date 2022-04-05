@@ -39,7 +39,7 @@ namespace API.Controllers
             var org = _mediator.Send(new GetGenericQueryById<Organisme>(condition: c => c.OrganismeId == id)).Result;
             return _mapper.Map<Organisme>(org);
         }
-        [HttpPost("PostOrganisme)")]
+        [HttpPost("PostOrganisme")]
         public async Task<Organisme> Post(Organisme org)
         {
             return await _mediator.Send(new PostId<Organisme>(org));

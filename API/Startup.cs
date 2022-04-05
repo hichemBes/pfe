@@ -74,9 +74,15 @@ namespace API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(builder =>
+            {
+                builder.WithOrigins("http://localhost:4200");
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
 
-         
-          
+
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {

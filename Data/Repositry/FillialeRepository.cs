@@ -13,7 +13,7 @@ namespace Data.Repositry
         HttpClient _httpclient = new HttpClient();
         public FillialeDto getsubsidiarybyid(Guid fillialeid)
         {
-            HttpResponseMessage response = _httpclient.GetAsync("http://localhost:44349/api/filliale/" + fillialeid).Result;
+            HttpResponseMessage response = _httpclient.GetAsync("http://localhost:44349/"+ fillialeid).Result;
             response.EnsureSuccessStatusCode();
             System.Console.WriteLine("response.Headers: " + response.Headers.ToString());
             var responsebody = response.Content.ReadAsStringAsync().Result;

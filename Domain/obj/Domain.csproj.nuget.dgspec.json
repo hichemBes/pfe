@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj": {}
+    "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj": {
+    "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\hichem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hichem\\Desktop\\Pfe\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hichem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -51,6 +51,10 @@
             "Mediator": {
               "target": "Package",
               "version": "[1.0.2123, )"
+            },
+            "Microsoft.AspNet.Identity.EntityFramework": {
+              "target": "Package",
+              "version": "[2.2.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
