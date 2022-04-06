@@ -48,6 +48,15 @@ namespace API.Controllers
                 e => e.Include(z => z.Organisme).Include(s => s.RequestType))).Result.Select(data => _mapper.Map<RequestDto>(data));
             return data;
         }
+        [HttpGet("getstatusInProgress")]
+        public IEnumerable<RequestDto> Getwaitingvalidation()
+        {
+            var data = _mediator.Send(new GetAllGenericQuery<Request>(includes:
+                e => e.Include(z => z.Organisme).Include(s => s.RequestType), condition: (g=>g.state==Domain.Models.Request.Status.InProgress))
+                  ).Result.Select(data => _mapper.Map<RequestDto>(data));
+            return data;
+        }
+       
         [HttpDelete("deleteRequest")]
         public string Delete(Guid id)
         {
