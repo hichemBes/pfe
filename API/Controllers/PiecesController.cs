@@ -33,6 +33,11 @@ namespace API.Controllers
         {
             return _mediator.Send(new GetAllGenericQuery<Domain.Models.PieceJoint>()).Result.Select(data => _mapper.Map<Domain.Models.PieceJoint>(data));
         }
+        [HttpGet("getbyrequest")]
+        public IEnumerable<Domain.Models.PieceJoint> Getbyrequest(Guid id )
+        {
+            return _mediator.Send(new GetAllGenericQuery<Domain.Models.PieceJoint>(g => g.fk_Request == id)).Result.Select(data => _mapper.Map<Domain.Models.PieceJoint>(data));
+        }
         [HttpPost("uploadfile")]
         public async Task<IActionResult> uplodsfile(List<IFormFile> files, Guid fk)
         {
@@ -50,7 +55,7 @@ namespace API.Controllers
                     var PieceJoint = new Domain.Models.PieceJoint
                     {
 
-                        Name = file.Name,
+                        Name = file.FileName,
                         fk_Request = fk,
                         path = filepath,
 
@@ -69,19 +74,19 @@ namespace API.Controllers
 
 
 
-        [HttpPost("download/{id}")]
+        [HttpGet("download/{id}")]
         public async Task<ActionResult> Download(Guid id)
         {
             var provider = new FileExtensionContentTypeProvider();
             var data = _mediator.Send(new GetGenericQueryById<Domain.Models.PieceJoint>(g => g.PieceId == id)).Result;
             if (data == null)
-            
+
                 return BadRequest("data is emptyy ");
 
 
             var file = data.path;
             string contenttype;
-            if(!provider.TryGetContentType(file,out contenttype))
+            if (!provider.TryGetContentType(file, out contenttype))
             {
                 contenttype = "application/octet-stream";
             }
@@ -98,6 +103,8 @@ namespace API.Controllers
 
             return File(filebytes, contenttype, data.Name);
         }
+
+
 
 
     }
