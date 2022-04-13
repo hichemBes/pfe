@@ -71,7 +71,7 @@ namespace Data.Context
                                     .HasForeignKey(n => n.Fk_CategoryId);
             modelBuilder.Entity<typerequestCatg>()
                                 .HasOne(r => r.typeRequest)
-                                .WithMany(n => n.typerequestCatg)
+                                .WithMany(n => n.typerequestCatgories)
                                 .HasForeignKey(n => n.FK_typeRequest);
             #endregion
 

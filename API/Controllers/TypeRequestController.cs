@@ -6,6 +6,8 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -30,11 +32,11 @@ namespace API.Controllers
             return await _mediator.Send(new PostId<typeRequest>(Cat));
         }
            [HttpGet("Getall")]
-        public typeRequest Getall()
+        public IEnumerable <typeRequest> Getall()
         {
 
-            var Category = _mediator.Send(new GetGenericQueryById<typeRequest>()).Result;
-            return _mapper.Map<typeRequest>(Category);
+            return _mediator.Send(new GetAllGenericQuery<typeRequest>())
+                .Result.Select(comp => _mapper.Map<typeRequest>(comp));
         }
 
         [HttpGet("{id}")]

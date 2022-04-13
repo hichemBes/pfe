@@ -33,7 +33,7 @@ namespace Api.Mapper
                 .ReverseMap();
             CreateMap<typerequestCatg, typeRequestCatgDto>()
                 .ForMember(des => des.Categorietype, i => i.MapFrom(src => src.Category.Categorytype))
-                .ForMember(des => des.RequestTypeName, i => i.MapFrom(src => src.Category.Categorytype))
+                .ForMember(des => des.RequestTypeName, i => i.MapFrom(src => src.typeRequest.RequestTypeName))
                 .ReverseMap();
 
 
