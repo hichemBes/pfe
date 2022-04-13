@@ -7,10 +7,14 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace API.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class typereqCatgController : ControllerBase
     {
         public readonly IMediator _mediator;
@@ -24,19 +28,34 @@ namespace API.Controllers
         [HttpPost("Post")]
         public  Task<typerequestCatg> Post([FromBody]typerequestCatg Cat)
         {
-            return  _mediator.Send(new PostId<typerequestCatg>(Cat));
+           
+                return _mediator.Send(new PostId<typerequestCatg>(Cat));
+            
+          
         }
         [HttpGet("gettypeRequestCatg")]
-        public typeRequestCatgDto Get(Guid id)
+        public IEnumerable<typeRequestCatgDto>Get(Guid id)
         {
-            var Category = _mediator.Send(new GetGenericQueryById<typerequestCatg>(includes: i => i.Include(x => x.Category).Include(x => x.typeRequest), condition: c => c.Fk_CategoryId == id)).Result;
-            return _mapper.Map<typeRequestCatgDto>(Category);
+            var data = _mediator.Send(new GetAllGenericQuery<typerequestCatg>(includes:
+             e => e.Include(z => z.Category).Include(s => s.typeRequest), condition: (g => g.Fk_CategoryId==id))
+               ).Result.Select(data => _mapper.Map<typeRequestCatgDto>(data));
+            return data;
         }
         [HttpGet("gettypeRequestCatg2")]
-        public typeRequestCatgDto Get2(Guid id)
+        public IEnumerable<typeRequestCatgDto>  Get2(Guid id)
         {
-            var Category = _mediator.Send(new GetGenericQueryById<typerequestCatg>(includes: i => i.Include(x => x.Category).Include(x => x.typeRequest), condition: c => c.FK_typeRequest == id)).Result;
-            return _mapper.Map<typeRequestCatgDto>(Category);
+            var data = _mediator.Send(new GetAllGenericQuery<typerequestCatg>(includes:
+                 e => e.Include(z => z.Category).Include(s => s.typeRequest), condition: (g => g.FK_typeRequest == id))
+                   ).Result.Select(data => _mapper.Map<typeRequestCatgDto>(data));
+            return data;
+
+        }
+        [HttpDelete("delete")]
+        public string  Delete (Guid idcategory)
+        {
+            return _mediator.Send(new DeleteGeneric<typerequestCatg>(idcategory)).Result;
+          
+
         }
     }
 }

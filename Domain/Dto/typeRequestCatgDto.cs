@@ -6,7 +6,8 @@ namespace Domain.Dto
 {
     public class typeRequestCatgDto
     {
-   
+        public Guid typerequestCatgID { get; set; }
+        public Guid Fk_CategoryId { get; set; }
         public string RequestTypeName { get; set; }
       
 
