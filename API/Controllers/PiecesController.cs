@@ -38,6 +38,11 @@ namespace API.Controllers
         {
             return _mediator.Send(new GetAllGenericQuery<Domain.Models.PieceJoint>(g => g.fk_Request == id)).Result.Select(data => _mapper.Map<Domain.Models.PieceJoint>(data));
         }
+        [HttpDelete("Delete")]
+        public string  Delete(Guid id)
+        {
+            return _mediator.Send(new DeleteGeneric<Domain.Models.PieceJoint>(id)).Result;
+        }
         [HttpPost("uploadfile")]
         public async Task<IActionResult> uplodsfile(List<IFormFile> files, Guid fk)
         {

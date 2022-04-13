@@ -56,7 +56,31 @@ namespace API.Controllers
                   ).Result.Select(data => _mapper.Map<RequestDto>(data));
             return data;
         }
-       
+        [HttpGet("getstatusNotDone")]
+        public IEnumerable<RequestDto> GetNotdone()
+        {
+            var data = _mediator.Send(new GetAllGenericQuery<Request>(includes:
+                e => e.Include(z => z.Organisme).Include(s => s.RequestType), condition: (g => g.state == Domain.Models.Request.Status.NotDone))
+                  ).Result.Select(data => _mapper.Map<RequestDto>(data));
+            return data;
+        }
+        [HttpGet("getstatusDone")]
+        public IEnumerable<RequestDto> Getdone()
+        {
+            var data = _mediator.Send(new GetAllGenericQuery<Request>(includes:
+                e => e.Include(z => z.Organisme).Include(s => s.RequestType), condition: (g => g.state == Domain.Models.Request.Status.Done))
+                  ).Result.Select(data => _mapper.Map<RequestDto>(data));
+            return data;
+        }
+        [HttpGet("getbyuser")]
+        public IEnumerable<RequestDto> Getuser(Guid userid)
+        {
+            var data = _mediator.Send(new GetAllGenericQuery<Request>(includes:
+                e => e.Include(z => z.Organisme).Include(s => s.RequestType), condition: (g => g.Fk_User==userid))
+                  ).Result.Select(data => _mapper.Map<RequestDto>(data));
+            return data;
+        }
+
         [HttpDelete("deleteRequest")]
         public string Delete(Guid id)
         {
