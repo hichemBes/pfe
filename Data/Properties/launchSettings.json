@@ -1,1 +1,8 @@
-{}
+{
+  "profiles": {
+    "Profil 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\hichem\\Desktop\\all\\Pfe\\API\\API.csproj.user"
+    }
+  }
+}

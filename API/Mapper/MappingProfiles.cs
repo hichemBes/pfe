@@ -44,10 +44,9 @@ namespace Api.Mapper
                 .ForMember(des => des.Organisme, i => i.MapFrom(src => src.Organisme.Name))
                 .ForMember(des => des.status, i => i.MapFrom(i => i.state))
                  .ForMember(des => des.Filliale, i => i.MapFrom(src => F.GetuserById(src.Fk_User).filliale))
-
                  .ForMember(des => des.requesttype, i => i.MapFrom(i => i.RequestType.RequestTypeName))
                  .ForMember(des => des.username, i => i.MapFrom(src =>
-                F.GetuserById(src.Fk_User).UserName))
+                 F.GetuserById(src.Fk_User).UserName))
               .ReverseMap();
             }
         }

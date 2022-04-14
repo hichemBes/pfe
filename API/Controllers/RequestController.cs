@@ -38,7 +38,7 @@ namespace API.Controllers
         public RequestDto GetbyId(Guid id)
         {
             var data = _mediator.Send(new GetGenericQueryById<Request>(includes:
-                e => e.Include(z => z.Organisme).Include(s => s.RequestType))).Result;
+                e => e.Include(z => z.Organisme).Include(s => s.RequestType), condition: (g => g.RequestId == id))).Result;
             return _mapper.Map<RequestDto>(data);
         }
         [HttpGet("getallrequest")]
