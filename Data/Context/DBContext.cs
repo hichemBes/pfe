@@ -19,6 +19,7 @@ namespace Data.Context
         public DbSet<FunctionofUser> FunctionofUser { get; set; }
         public DbSet<PieceJoint> Pieces { get; set; }
         public DbSet<Request> Requests { get; set; }
+        public DbSet<Notification> Notifications { get; set; }
         public DbSet<typerequestCatg> typerequestCatg { get; set; }
 
         public DbSet<typeRequest> typeRequests { get; set; }
@@ -33,7 +34,8 @@ namespace Data.Context
             modelBuilder.Entity<FunctionofUser>().HasKey(c => c.IdFunctionofUser);
             modelBuilder.Entity<PieceJoint>().HasKey(c => c.PieceId);
             modelBuilder.Entity<Request>().HasKey(c => c.RequestId);
-        
+            modelBuilder.Entity<Notification>().HasKey(c => c.Id);
+
             modelBuilder.Entity<typeRequest>().HasKey(c => c.RequestTypeId);
             modelBuilder.Entity<typerequestCatg>().HasKey(c => c.typerequestCatgID);
             modelBuilder.Entity<Organisme>().HasKey(c => c.OrganismeId);

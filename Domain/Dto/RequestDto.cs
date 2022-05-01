@@ -14,7 +14,7 @@ namespace Domain.Dto
         public string  Filliale { get; set; }
         public Guid fk_RequestType { get; set; }
         public string username { get; set; }
-       
+        public Guid fk_user { get; set; }
         public Guid fk_Organisme { get; set; }
         public string requesttype { get; set; }
         public string Organisme { get; set; }

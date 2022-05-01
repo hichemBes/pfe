@@ -1,4 +1,6 @@
 using Data.Context;
+using Data.Repositry;
+using Domain.Models;
 using Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
@@ -32,27 +34,26 @@ namespace API
         {
             DependencyContainer.RegisterServices(services);
             services.AddControllers();
+
+            services.AddCors(o => o.AddPolicy("CorsPolicy", builder => {
+                builder
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials()
+                .WithOrigins("http://localhost:4200");
+            }));
             services.AddDbContext<DBContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("DevConnection"));
             });
             services.AddMediatR(typeof(Startup));
             services.AddMediatR(Assembly.GetExecutingAssembly());
-
+            services.AddSignalR();
             /////////////
             services.AddControllers();
             //
             services.AddAutoMapper(typeof(Startup));
-            // Cors Origin configuring
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowAll",
-                    options =>
-                    options.AllowAnyOrigin()
-                    .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    );
-            });
+      
 
             //
             // Register the Swagger generator, defining 1 or more Swagger documents
@@ -79,14 +80,21 @@ namespace API
                 builder.WithOrigins("http://localhost:4200");
                 builder.AllowAnyMethod();
                 builder.AllowAnyHeader();
+                builder.AllowCredentials();
             });
 
+            app.UseCors("CorsPolicy");
 
-                
+
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Workflow");
+            });
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapHub<BroadcastHub>("/notify");
+                endpoints.MapHub<ChartHub>("/chart");
             });
 
             app.UseEndpoints(endpoints =>

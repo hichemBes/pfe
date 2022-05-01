@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
+using Data.Repositry;
 using Domain.Commands;
 using Domain.Dto;
+using Domain.Interface;
 using Domain.Models;
 using Domain.Quieres;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -22,8 +25,12 @@ namespace Api.Controllers
 
         public readonly IMediator _mediator;
         private readonly IMapper _mapper;
-        public CategoryController(IMediator mediator, IMapper mapper)
+        private readonly Data.Context.DBContext _context;
+        private readonly IHubContext<BroadcastHub, IHubClient> _hubContext;
+        public CategoryController(IMediator mediator, IMapper mapper, Data.Context.DBContext context, IHubContext<BroadcastHub,IHubClient> hubContext)
         {
+            _context = context;
+            _hubContext = hubContext;
             _mediator = mediator;
             _mapper = mapper;
         }
@@ -51,12 +58,23 @@ namespace Api.Controllers
         [HttpDelete("deleteCategory")]
         public string Delete(Guid id)
         {
+            Notification notification = new Notification()
+            {
+                Message = " Suprission de categorie",
+                Id=Guid.NewGuid(),
+
+            };
+            _context.Notifications.Add(notification);
+            _hubContext.Clients.All.BroadcastMessage();
             return _mediator.Send(new DeleteGeneric<Category>(id)).Result;
         }
         [HttpPut("updatecategory")]
         public string Put([FromBody] Category Cat)
         {
             return _mediator.Send(new PutGeneric<Category>(Cat)).Result;
+            //Notification notification = new Notification()
+            //{ Message = "a"
+            //};
         }
 
         [HttpGet("GetbyidFunction")]
@@ -66,7 +84,7 @@ namespace Api.Controllers
                 e => e.Include(z => z.Category).
                Include(s => s.Function).ThenInclude(it => it.FunctionofUsers), condition: (g => g.Function.IdFunction == IdFonction)
               )).Result.Select(data => _mapper.Map<CategoryFunctionDto>(data));
-
+        
             return data;
         }
 

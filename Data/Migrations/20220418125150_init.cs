@@ -33,6 +33,20 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Notifications",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Message = table.Column<string>(nullable: true),
+                    RequestId = table.Column<Guid>(nullable: false),
+                    userId = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Notifications", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Organisme",
                 columns: table => new
                 {
@@ -223,6 +237,9 @@ namespace Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "FunctionofUser");
+
+            migrationBuilder.DropTable(
+                name: "Notifications");
 
             migrationBuilder.DropTable(
                 name: "Pieces");

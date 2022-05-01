@@ -16,7 +16,7 @@ namespace Infrastructure
     {
         public static void RegisterServices(IServiceCollection services)
         {
-            
+           
             services.AddTransient<IGenericRepository<Function>, Repository<Function>>();
             services.AddTransient<IGenericRepository<FunctionofUser>, Repository<FunctionofUser>>();
            
@@ -28,6 +28,7 @@ namespace Infrastructure
             services.AddTransient<IGenericRepository<CategoryFunction>, Repository<CategoryFunction>>();
             services.AddTransient<IGenericRepository<typerequestCatg>, Repository<typerequestCatg>>();
             services.AddTransient<IGenericRepository<PieceJoint>, Repository<PieceJoint>>();
+            
             #region Request
 
 

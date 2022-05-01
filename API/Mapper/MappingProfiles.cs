@@ -38,7 +38,8 @@ namespace Api.Mapper
                 .ForMember(des => des.RequestTypeName, i => i.MapFrom(src => src.typeRequest.RequestTypeName))
                 .ReverseMap();
 
-
+            CreateMap<PieceJoint, PieceDto>()
+                .ForMember(des => des.fk_user, i => i.MapFrom(src => src.Requests.Fk_User)).ReverseMap();
 
             CreateMap<Request, RequestDto>()
                 .ForMember(des => des.Organisme, i => i.MapFrom(src => src.Organisme.Name))
@@ -47,6 +48,7 @@ namespace Api.Mapper
                  .ForMember(des => des.requesttype, i => i.MapFrom(i => i.RequestType.RequestTypeName))
                  .ForMember(des => des.username, i => i.MapFrom(src =>
                  F.GetuserById(src.Fk_User).UserName))
+                  .ForMember(des => des.fk_user, i => i.MapFrom(src =>src.Fk_User))
               .ReverseMap();
             }
         }

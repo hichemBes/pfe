@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(DBContext))]
-    [Migration("20220316123018_init")]
+    [Migration("20220418125150_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.0")
+                .HasAnnotation("ProductVersion", "3.1.21")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -90,6 +90,26 @@ namespace Data.Migrations
                     b.HasIndex("Fk_Function");
 
                     b.ToTable("FunctionofUser");
+                });
+
+            modelBuilder.Entity("Domain.Models.Notification", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("RequestId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("userId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Notifications");
                 });
 
             modelBuilder.Entity("Domain.Models.Organisme", b =>
@@ -250,7 +270,7 @@ namespace Data.Migrations
             modelBuilder.Entity("Domain.Models.typerequestCatg", b =>
                 {
                     b.HasOne("Domain.Models.typeRequest", "typeRequest")
-                        .WithMany("typerequestCatg")
+                        .WithMany("typerequestCatgories")
                         .HasForeignKey("FK_typeRequest")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
